@@ -20,6 +20,7 @@ interface moduleparam {
     }
     isShow: (arg0: boolean) => void
     getDetail: (arg0: Array<{}>, type: string) => void
+    pagesize?: number
     urls: {
       common: {
         categoryurl: string
@@ -61,7 +62,7 @@ type list = {
 
 export const urlContext = createContext({})
 export const ModuleListComponent = ({
-  params: { navtitle, urls, getDetail, isShow }
+  params: { navtitle, urls, getDetail, isShow, pagesize = 20 }
 }: moduleparam) => {
   const [keyword, setKeyword] = useState(null)
   const [category, setCategory] = useState(null)
@@ -157,7 +158,7 @@ export const ModuleListComponent = ({
 
   const loadFunc = (pagenum: number) => {
     console.log('下一页搜索信息', modules, pagenum, keyword, category)
-    if (modules.length < (pagenum - 1) * 6) {
+    if (modules.length < (pagenum - 1) * pagesize) {
       // setShowmore(false)
       setLoad(<div className={styles.loader}>加载完成</div>)
       return

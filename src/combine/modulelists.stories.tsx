@@ -11,6 +11,7 @@ interface moduleparam {
     }
     isShow: (arg0: boolean) => void
     getDetail: (arg0: Array<{}>, type: string) => void
+    pagesize?: number
     urls: {
       common: {
         categoryurl: string
@@ -54,6 +55,7 @@ lists.args = {
     },
     isShow: showModile,
     getDetail: getDetailMsg,
+    pagesize: 6,
     urls: {
       common: {
         categoryurl: baseurl + '/v3/api/admin/h5/overlays/categories',

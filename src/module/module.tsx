@@ -32,6 +32,16 @@ const PreviewSvg = () => (
     />
   </svg>
 )
+const deleteSvg = () => (
+  <svg width='1em' height='1em' fill='currentColor' viewBox='0 0 1024 1024'>
+    <path
+      d='M608 768c-17.696 0-32-14.304-32-32V384c0-17.696 14.304-32 32-32s32 14.304 32 32v352c0 17.696-14.304 32-32 32z m-192 0c-17.696 0-32-14.304-32-32V384c0-17.696 14.304-32 32-32s32 14.304 32 32v352c0 17.696-14.304 32-32 32z m512-544H768v-64c0-52.928-42.72-96-95.264-96H352c-52.928 0-96 43.072-96 96v64H96c-17.696 0-32 14.304-32 32s14.304 32 32 32h832c17.696 0 32-14.304 32-32s-14.304-32-32-32z m-608-64c0-17.632 14.368-32 32-32h320.736C690.272 128 704 142.048 704 160v64H320v-64z m416.128 800H288.064c-52.928 0-96-43.072-96-96V383.52c0-17.664 14.336-32 32-32s32 14.336 32 32V864c0 17.664 14.368 32 32 32h448.064c17.664 0 32-14.336 32-32V384.832c0-17.664 14.304-32 32-32s32 14.336 32 32V864c0 52.928-43.072 96-96 96z'
+      fill='#8a8a8a'
+      p-id='2106'
+    />
+  </svg>
+)
+const DeleteIcon = (props: any) => <Icon component={deleteSvg} {...props} />
 const PreviewIcon = (props: any) => <Icon component={PreviewSvg} {...props} />
 
 export const ModuleComponent = ({ modules }: Module) => {
@@ -95,7 +105,9 @@ export const ModuleComponent = ({ modules }: Module) => {
                 okText='确定'
                 cancelText='取消'
               >
-                <div>删除</div>
+                <div>
+                  <DeleteIcon style={{ color: 'gray', fontSize: 15 }} />
+                </div>
               </Popconfirm>
             </div>
           </div>
