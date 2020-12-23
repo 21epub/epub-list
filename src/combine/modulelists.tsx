@@ -70,7 +70,7 @@ export const ModuleListComponent = ({
   const [pageStart, setPageStart] = useState(1)
   const [unique, setUnique] = useState(2)
   const [load, setLoad] = useState(
-    <div className={styles.loader}>
+    <div key='scroll-load' className={styles.loader}>
       <LoadingOutlined />
     </div>
   )
@@ -160,7 +160,11 @@ export const ModuleListComponent = ({
     console.log('下一页搜索信息', modules, pagenum, keyword, category)
     if (modules.length < (pagenum - 1) * pagesize) {
       // setShowmore(false)
-      setLoad(<div className={styles.loader}>加载完成</div>)
+      setLoad(
+        <div key='scroll-load' className={styles.loader}>
+          加载完成
+        </div>
+      )
       return
     }
     let path = `?page=${pagenum}`
