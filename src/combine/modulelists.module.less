@@ -1,8 +1,9 @@
 .inputmessage {
   display: flex;
   justify-content: space-around;
-  margin: 0 5px;
+  margin: 3px 5px 0;
 }
+
 .lists {
   display: flex;
   flex-wrap: wrap;
@@ -10,21 +11,24 @@
   margin-top: 10px;
   overflow-y: auto;
 }
+
 .commonmodule {
-  // height:400px;
   position: fixed;
-  top: 10px;
-  left: 10px;
+  // top: 10px;
+  // left: 10px;
   display: flex;
   flex-flow: column nowrap;
   width: 320px;
   height: 100%;
   box-shadow: 0 0 4px;
 }
+
 .closecommonmodule {
   width: 0;
   overflow: hidden;
+  // display: none
 }
+
 .close {
   position: absolute;
   top: 0;
@@ -36,27 +40,32 @@
   text-align: center;
   background-color: lightskyblue;
   background-color: rgb(230, 230, 230);
+
   &:hover {
     color: #40a9ff;
   }
 }
+
 .loader {
   height: 80px;
   line-height: 80px;
   text-align: center;
 }
+
 .lists::-webkit-scrollbar {
   /* 滚动条整体样式 */
   display: none;
   // width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
   // height: 4px;
 }
+
 .lists::-webkit-scrollbar-thumb {
   /* 滚动条里面小方块 */
   background: rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 }
+
 .lists::-webkit-scrollbar-track {
   /* 滚动条里面轨道 */
   background: rgba(0, 0, 0, 0.1);

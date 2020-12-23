@@ -4,38 +4,37 @@ import { LoadingOutlined, LeftOutlined } from '@ant-design/icons'
 import { SelectComponent } from '../select/select'
 import { SearchComponent } from '../search/search'
 import { ModuleComponent } from '../module/module'
-import { SortComponent } from '../sort/sort'
+// import { SortComponent } from '../sort/sort'
 import { HeadComponent } from '../head/head'
 import { createContext, useEffect, useMemo, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import { message } from 'antd'
 import { DataClient } from '@21epub/epub-data-client'
-import { concat } from 'ramda'
+
 import { ParentReceive } from '../transmitdata/transmitdata'
-interface Callback {
-  (name: string): void
-}
+
 interface moduleparam {
   params: {
     navtitle: {
       titles: Array<{ name: string; selected: boolean; alias: string }>
     }
-    getDetail: (arg0: Callback) => void
+    isShow: (arg0: boolean) => void
+    getDetail: (arg0: Array<{}>, type: string) => void
     urls: {
       common: {
         categoryurl: string
         searchjurl: string
-        listsurl: string
-        listurl: string
+        alllistsurl: string
+        detailurl: string
         changelisturl: string
         deletelisturl: string
       }
       [my: string]: {
         categoryurl: string
         searchjurl: string
-        listsurl: string
-        listurl: string
+        alllistsurl: string
         changelisturl: string
+        detailurl: string
         deletelisturl: string
       }
     }
@@ -47,61 +46,43 @@ type list = {
   id: number
   [x: string]: string | number
 }
-
-// const moduleCategory = {
+// interface detailmsg {
+//   id: string
+//   type: string
+// }
+// const sortlist = {
 //   items: [
-//     {
-//       title: 'Node1',
-//       value: '0-0',
-//       children: [
-//         {
-//           title: 'Child Node1',
-//           value: '0-0-1'
-//         },
-//         {
-//           title: 'Child Node2',
-//           value: '0-0-2'
-//         }
-//       ]
-//     },
-//     {
-//       title: 'Node2',
-//       value: '0-1'
-//     }
+//     { title: '主题', name: '主题' },
+//     { title: '主题', name: '主题' },
+//     { title: '主题', name: '主题' },
+//     { title: '主题', name: '主题' }
 //   ]
 // }
 
-const sortlist = {
-  items: [
-    { title: '主题', name: '主题' },
-    { title: '主题', name: '主题' },
-    { title: '主题', name: '主题' },
-    { title: '主题', name: '主题' }
-  ]
-}
-
 export const urlContext = createContext({})
 export const ModuleListComponent = ({
-  params: { navtitle, urls, getDetail }
+  params: { navtitle, urls, getDetail, isShow }
 }: moduleparam) => {
-  // debugger
-  // const [selectedtitle,setSelectedtitle]=useState('my')
   const [keyword, setKeyword] = useState(null)
   const [category, setCategory] = useState(null)
   const [moduletype, setmModuletype] = useState('common')
   const [pageStart, setPageStart] = useState(1)
   const [unique, setUnique] = useState(2)
+  const [load, setLoad] = useState(
+    <div className={styles.loader}>
+      <LoadingOutlined />
+    </div>
+  )
 
-  const [moduleclass, setModuleclass] = useState(styles.commonmodule)
   const [page] = useState(1)
-  const [showmore, setShowmore] = useState(true)
+  // const [showmore, setShowmore] = useState(true)
   const url = urls[moduletype]
-  const clientlists = useMemo(() => new DataClient<any>(url.listsurl), [
-    url.listsurl
+  const clientlists = useMemo(() => new DataClient<any>(url.alllistsurl), [
+    url.alllistsurl
   ])
 
   const getcategory = useMemo(() => new DataClient<any>(url.categoryurl), [
-    url.listsurl
+    url.alllistsurl
   ])
 
   const moduleCategory = {
@@ -109,19 +90,20 @@ export const ModuleListComponent = ({
   }
 
   useEffect(() => {
-    const subscription = ParentReceive.detailModuleId$.subscribe((id) => {
-      const detailModule = new DataClient<any>(url.deletelisturl)
-      detailModule
-        .id(id)
-        .get()
-        .then((res) => {
-          getDetail(res)
-        })
-        .catch(() => {
-          message.error('获取详细信息失败')
-          console.log(99999, '获取详细信息失败')
-        })
-    })
+    const subscription = ParentReceive.detailModuleId$.subscribe(
+      ({ id, type }: any) => {
+        const detailModule = new DataClient<any>(url.detailurl)
+        detailModule
+          .id(id)
+          .get()
+          .then((res) => {
+            if (res) getDetail(res, type)
+          })
+          .catch(() => {
+            message.error('获取详细信息失败')
+          })
+      }
+    )
     return () => {
       subscription.unsubscribe()
     }
@@ -129,7 +111,7 @@ export const ModuleListComponent = ({
 
   useEffect(() => {
     const subscription = ParentReceive.deleteModuleId$.subscribe((id) => {
-      const delteModule = new DataClient<any>(url.listurl)
+      const delteModule = new DataClient<any>(url.deletelisturl)
       delteModule
         .id(id)
         .delete()
@@ -139,7 +121,6 @@ export const ModuleListComponent = ({
         })
         .catch(() => {
           message.error('删除失败')
-          // console.log(99999, '删除失败')
         })
     })
     return () => {
@@ -153,7 +134,7 @@ export const ModuleListComponent = ({
   useEffect(() => {
     setUnique(Math.floor(Math.random() * 1000))
     clientlists.deleteLocal()
-    setShowmore(true)
+    // setShowmores
     console.log('首次调用接口', page, keyword, category)
     setPageStart(page)
     let path = `?page=${page}`
@@ -163,7 +144,7 @@ export const ModuleListComponent = ({
       .path(path)
       .get()
       .then((res) => {
-        clientlists.updateLocal(res)
+        if (res) clientlists.updateLocal(res)
       })
     return () => {}
   }, [keyword, category])
@@ -171,14 +152,14 @@ export const ModuleListComponent = ({
   console.log('modules', modules)
 
   const closeModule = () => {
-    setModuleclass(styles.closecommonmodule)
+    isShow(false)
   }
 
   const loadFunc = (pagenum: number) => {
-    // setUnique(Math.floor(Math.random() * 1000))
     console.log('下一页搜索信息', modules, pagenum, keyword, category)
     if (modules.length < (pagenum - 1) * 6) {
-      setShowmore(false)
+      // setShowmore(false)
+      setLoad(<div className={styles.loader}>加载完成</div>)
       return
     }
     let path = `?page=${pagenum}`
@@ -189,20 +170,21 @@ export const ModuleListComponent = ({
       .path(path)
       .get()
       .then((res) => {
-        const data = concat(clientlists.getData(), res)
+        let data: Array<{}> = []
+        if (res) data = res.concat(clientlists.getData())
         clientlists.updateLocal(data)
         console.log('下一页', res)
       })
   }
+
   return (
-    <div className={moduleclass}>
+    <div className={styles.commonmodule}>
       <urlContext.Provider value={{ setKeyword, setCategory, setmModuletype }}>
         <div className={styles.close} onClick={closeModule}>
           <LeftOutlined />
         </div>
         <div>
           <HeadComponent {...navtitle} />
-          <SortComponent {...sortlist} />
           <div className={styles.inputmessage}>
             <SearchComponent />
             <SelectComponent {...moduleCategory} />
@@ -214,14 +196,9 @@ export const ModuleListComponent = ({
               key={String(unique)}
               pageStart={pageStart}
               loadMore={(pagenum) => loadFunc(pagenum)}
-              hasMore={false || showmore}
+              hasMore={false || true}
               initialLoad={false}
-              loader={
-                <div className={styles.loader}>
-                  <LoadingOutlined />
-                  {/* {showmore && <LoadingOutlined />} */}
-                </div>
-              }
+              loader={load}
               useWindow={false}
             >
               <ModuleComponent {...{ modules }} />

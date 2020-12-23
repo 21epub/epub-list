@@ -9,7 +9,7 @@ interface TreeContent {
   [x: string]: number | string | Array<TreeContent>
 }
 export const SelectComponent = ({ items }: any) => {
-  const [selectvalue, setSelectvalue] = useState('0-1')
+  const [selectvalue, setSelectvalue] = useState('所有')
   const value: any = useContext(urlContext)
   const { setCategory } = value
 

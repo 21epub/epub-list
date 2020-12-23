@@ -1,7 +1,7 @@
-import { ExampleComponent } from '.'
+import { ModuleListComponent } from './combine/modulelists'
 
-describe('ExampleComponent', () => {
+describe('ModuleListComponent', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(ModuleListComponent).toBeTruthy()
   })
 })

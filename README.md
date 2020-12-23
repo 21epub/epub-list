@@ -17,21 +17,82 @@ This is a component for react.
 ## Install
 
 ```bash
-npm install --save epub-list
+npm install --save @21epub/epub-list
 ```
 
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
-
-import MyComponent from 'epub-list'
-import 'epub-list/dist/index.css'
-
-class Example extends Component {
-  render() {
-    return <MyComponent />
+import React from 'react'
+import ModuleListComponent from '@21epub/epub-list'
+import '@21epub/epub-list/dist/index.css'
+import { render } from 'react-dom'
+interface moduleparam {
+  params: {
+    navtitle: {
+      titles: Array<{ name: string; selected: boolean; alias: string }>
+    }
+    isShow: (arg0: boolean) => void
+    getDetail: (arg0: Array<{}>, type: string) => void
+    urls: {
+      common: {
+        categoryurl: string
+        searchjurl: string
+        listsurl: string
+        listurl: string
+        changelisturl: string
+        deletelisturl: string
+      }
+      [my: string]: {
+        categoryurl: string
+        searchjurl: string
+        listsurl: string
+        listurl: string
+        changelisturl: string
+        deletelisturl: string
+      }
+    }
   }
+}
+
+const baseurl = 'https://yapi.epub360.com/mock/125'
+const getDetailMsg = (obj: [], type: string) => {
+  console.log('huoquxiangxixinxi', obj, type)
+}
+const showModile = (iShow: boolean) => {
+  console.log('关闭', iShow)
+}
+const args: moduleparam = {
+  params: {
+    navtitle: {
+      titles: [{ name: '模块', selected: true, alias: 'common' }]
+    },
+    isShow: showModile,
+    getDetail: getDetailMsg,
+    urls: {
+      common: {
+        categoryurl: baseurl + '/v3/api/admin/h5/overlays/categories',
+        searchjurl: baseurl + '/v3/api/admin/h5/overlays/',
+        listsurl: baseurl + '/v3/api/admin/h5/overlays/',
+        listurl: baseurl + '/v3/api/admin/h5/overlays/',
+        changelisturl: baseurl + '/v3/api/admin/h5/overlays/',
+        deletelisturl: baseurl + '/v3/api/admin/h5/overlays/'
+      },
+      my: {
+        categoryurl: baseurl + '/v3/api/admin/h5/overlays/categories',
+        searchjurl: baseurl + '/v3/api/admin/h5/overlays/',
+        listsurl: baseurl + '/v3/api/admin/h5/overlays/',
+        listurl: baseurl + '/v3/api/admin/h5/overlays/',
+        changelisturl: baseurl + '/v3/api/admin/h5/overlays/',
+        deletelisturl: baseurl + '/v3/api/admin/h5/overlays/'
+      }
+    }
+  }
+}
+
+export const loadModule = () => {
+  const frag = document.createElement('div')
+  render(<ModuleListComponent {...args} />, frag)
 }
 ```
 

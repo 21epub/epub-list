@@ -15,7 +15,7 @@ export const HeadComponent = ({ titles }: Title) => {
   }: {
     name: string
     selected: boolean
-    alias: string
+    alias?: string
   }) => {
     titles.map((item) => {
       const it = item
