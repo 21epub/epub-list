@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.13](https://github.com/li-qiuli/epub-list/compare/v0.0.12...v0.0.13) (2020-12-23)
+
+### Features
+
+- 🎸 chang name ([a3ddab0](https://github.com/li-qiuli/epub-list/commit/a3ddab08765b4a6b1ca6a06c0c8573cf8b010872))
+- 🎸 为 loader 加 key ([3d7f30b](https://github.com/li-qiuli/epub-list/commit/3d7f30bb5f7ddc2a1d6d9725548eef4003c59bf9))
+
 ### [0.0.12](https://github.com/li-qiuli/epub-list/compare/v0.0.11...v0.0.12) (2020-12-23)
 
 ### Features
