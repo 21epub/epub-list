@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.12](https://github.com/li-qiuli/epub-list/compare/v0.0.11...v0.0.12) (2020-12-23)
+
+### Features
+
+- 🎸 模块组件 ([9ee8d17](https://github.com/li-qiuli/epub-list/commit/9ee8d1719d84f776fc97782612e6e49efba8a34d))
+
 ### [0.0.11](https://github.com/li-qiuli/epub-list/compare/v0.0.10...v0.0.11) (2020-12-21)
 
 ### [0.0.10](https://github.com/li-qiuli/epub-list/compare/v0.0.9...v0.0.10) (2020-12-21)
