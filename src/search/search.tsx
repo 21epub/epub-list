@@ -17,10 +17,11 @@ export const SearchComponent = () => {
   const { setKeyword } = value
   const [inputvalue, setInputvalue] = useState('')
   const onSearch = (event: any) => {
-    if ((event && event.target && event.target.value) || inputvalue) {
-      const value = event.target.value || inputvalue
-      setKeyword(value)
-    }
+    setKeyword(inputvalue)
+    // if ((event && event.target && event.target.value) || inputvalue) {
+    //   const value = event.target.value || inputvalue
+    //   setKeyword(value)
+    // }
   }
   const getValue = (event: { target: { value: any } }) => {
     const value = event.target.value
@@ -37,7 +38,7 @@ export const SearchComponent = () => {
       value={inputvalue}
       prefix={suffix}
       placeholder='搜索'
-      allowClear
+      // allowClear
       onPressEnter={onSearch}
       onChange={getValue}
       style={{ width: '46%' }}

@@ -65,18 +65,18 @@ export const ModuleListComponent = ({
   params: { navtitle, urls, getDetail, isShow, pagesize = 20 }
 }: moduleparam) => {
   const [keyword, setKeyword] = useState(null)
+  const [show, setShow] = useState(true)
   const [category, setCategory] = useState(null)
   const [moduletype, setmModuletype] = useState('common')
   const [pageStart, setPageStart] = useState(1)
   const [unique, setUnique] = useState(2)
-  const [load, setLoad] = useState(
+  const [load] = useState(
     <div key='scroll-load' className={styles.loader}>
       <LoadingOutlined />
     </div>
   )
 
   const [page] = useState(1)
-  // const [showmore, setShowmore] = useState(true)
   const url = urls[moduletype]
   const clientlists = useMemo(() => new DataClient<any>(url.alllistsurl), [
     url.alllistsurl
@@ -89,7 +89,11 @@ export const ModuleListComponent = ({
   const moduleCategory = {
     items: getcategory.useData()
   }
-
+  const closeLoading = (res: any) => {
+    if (res && res.length < pagesize) {
+      setShow(false)
+    }
+  }
   useEffect(() => {
     const subscription = ParentReceive.detailModuleId$.subscribe(
       ({ id, type }: any) => {
@@ -105,13 +109,7 @@ export const ModuleListComponent = ({
           })
       }
     )
-    return () => {
-      subscription.unsubscribe()
-    }
-  }, [])
-
-  useEffect(() => {
-    const subscription = ParentReceive.deleteModuleId$.subscribe((id) => {
+    const delscription = ParentReceive.deleteModuleId$.subscribe((id) => {
       const delteModule = new DataClient<any>(url.deletelisturl)
       delteModule
         .id(id)
@@ -124,33 +122,32 @@ export const ModuleListComponent = ({
           message.error('删除失败')
         })
     })
+    getcategory.getAll()
     return () => {
       subscription.unsubscribe()
+      delscription.unsubscribe()
     }
   }, [])
-  useEffect(() => {
-    getcategory.getAll()
-    return () => {}
-  }, [])
+  const modules: Array<list> = clientlists.useData()
+  console.log('modules', modules)
   useEffect(() => {
     setUnique(Math.floor(Math.random() * 1000))
-    clientlists.deleteLocal()
-    // setShowmores
     console.log('首次调用接口', page, keyword, category)
     setPageStart(page)
     let path = `?page=${page}`
     if (keyword) path = `${path}&query=${keyword}`
     if (category) path = `${path}&category_id=${category}`
+    setShow(true)
     clientlists
       .path(path)
       .get()
       .then((res) => {
         if (res) clientlists.updateLocal(res)
+        closeLoading(res)
+        console.log('modules1', modules)
       })
     return () => {}
   }, [keyword, category])
-  const modules: Array<list> = clientlists.useData()
-  console.log('modules', modules)
 
   const closeModule = () => {
     isShow(false)
@@ -159,12 +156,7 @@ export const ModuleListComponent = ({
   const loadFunc = (pagenum: number) => {
     console.log('下一页搜索信息', modules, pagenum, keyword, category)
     if (modules.length < (pagenum - 1) * pagesize) {
-      // setShowmore(false)
-      setLoad(
-        <div key='scroll-load' className={styles.loader}>
-          加载完成
-        </div>
-      )
+      setShow(false)
       return
     }
     let path = `?page=${pagenum}`
@@ -179,6 +171,7 @@ export const ModuleListComponent = ({
         if (res) data = res.concat(clientlists.getData())
         clientlists.updateLocal(data)
         console.log('下一页', res)
+        closeLoading(res)
       })
   }
 
@@ -201,12 +194,17 @@ export const ModuleListComponent = ({
               key={String(unique)}
               pageStart={pageStart}
               loadMore={(pagenum) => loadFunc(pagenum)}
-              hasMore={false || true}
+              hasMore={false || show}
               initialLoad={false}
               loader={load}
               useWindow={false}
             >
               <ModuleComponent {...{ modules }} />
+              {!show && (
+                <div key='scroll-load' className={styles.loader}>
+                  加载完成
+                </div>
+              )}
             </InfiniteScroll>
           ) : (
             ''

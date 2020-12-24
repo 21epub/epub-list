@@ -13,13 +13,14 @@ export const SelectComponent = ({ items }: any) => {
   const value: any = useContext(urlContext)
   const { setCategory } = value
 
-  const onChange = (value: string) => {
-    console.log(value)
+  const onChange = (values: string) => {
+    const value = values || ''
     setSelectvalue(value)
     setCategory(value)
   }
   return (
     <TreeSelect
+      allowClear
       style={{ width: '46%' }}
       value={selectvalue}
       dropdownStyle={{ maxHeight: 200, overflow: 'auto' }}
