@@ -1,6 +1,6 @@
 {
   "name": "@21epub/epub-list",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "",
   "author": "li-qiuli",
   "license": "MIT",
@@ -58,7 +58,7 @@
     "antd": "^4.9.2"
   },
   "dependencies": {
-    "@21epub/epub-data-client": "^0.4.0",
+    "@21epub/epub-data-client": "^0.5.1",
     "@types/ramda": "^0.27.33",
     "@types/react-infinite-scroller": "^1.2.1",
     "font-awesome": "^4.7.0",
