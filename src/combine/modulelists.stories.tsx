@@ -10,7 +10,7 @@ interface moduleparam {
       titles: Array<{ name: string; selected: boolean; alias: string }>
     }
     isShow: (arg0: boolean) => void
-    getDetail: (arg0: Array<{}>, type: string) => void
+    getDetail: (arg0: string | number, type: string) => void
     pagesize?: number
     urls: {
       common: {
@@ -37,13 +37,20 @@ export default {
   component: ModuleListComponent,
   argTypes: {}
 } as Meta
-const getDetailMsg = (obj: [], type: string) => {
+const getDetailMsg = (obj: number | string, type: string) => {
   console.log('huoquxiangxixinxi', obj, type)
 }
 const showModile = (iShow: boolean) => {
   console.log('关闭', iShow)
 }
-const Template: Story<moduleparam> = (args) => <ModuleListComponent {...args} />
+const Template: Story<moduleparam> = (args) => (
+  <div {...args}>
+    <ModuleListComponent {...args} />
+    <div style={{ display: 'none' }}>
+      <ModuleListComponent {...args} />
+    </div>
+  </div>
+)
 
 export const lists = Template.bind({})
 

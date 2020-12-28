@@ -8,10 +8,7 @@ import { ModuleComponent } from '../module/module'
 import { HeadComponent } from '../head/head'
 import { createContext, useEffect, useMemo, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
-import { message } from 'antd'
 import { DataClient } from '@21epub/epub-data-client'
-
-import { ParentReceive } from '../transmitdata/transmitdata'
 
 interface moduleparam {
   params: {
@@ -19,7 +16,7 @@ interface moduleparam {
       titles: Array<{ name: string; selected: boolean; alias: string }>
     }
     isShow: (arg0: boolean) => void
-    getDetail: (arg0: Array<{}>, type: string) => void
+    getDetail: (arg0: string | number, type: string) => void
     pagesize?: number
     urls: {
       common: {
@@ -95,38 +92,8 @@ export const ModuleListComponent = ({
     }
   }
   useEffect(() => {
-    const subscription = ParentReceive.detailModuleId$.subscribe(
-      ({ id, type }: any) => {
-        const detailModule = new DataClient<any>(url.detailurl)
-        detailModule
-          .id(id)
-          .get()
-          .then((res) => {
-            if (res) getDetail(res, type)
-          })
-          .catch(() => {
-            message.error('获取详细信息失败')
-          })
-      }
-    )
-    const delscription = ParentReceive.deleteModuleId$.subscribe((id) => {
-      const delteModule = new DataClient<any>(url.deletelisturl)
-      delteModule
-        .id(id)
-        .delete()
-        .then((res) => {
-          message.success('删除成功')
-          clientlists.id(id).deleteLocal()
-        })
-        .catch(() => {
-          message.error('删除失败')
-        })
-    })
     getcategory.getAll()
-    return () => {
-      subscription.unsubscribe()
-      delscription.unsubscribe()
-    }
+    return () => {}
   }, [])
   const modules: Array<list> = clientlists.useData()
   console.log('modules', modules)
@@ -199,7 +166,7 @@ export const ModuleListComponent = ({
               loader={load}
               useWindow={false}
             >
-              <ModuleComponent {...{ modules }} />
+              <ModuleComponent {...{ modules, getDetail }} />
               {!show && (
                 <div key='scroll-load' className={styles.loader}>
                   加载完成

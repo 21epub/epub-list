@@ -10,6 +10,7 @@ interface Modules {
     id: string | number
     [x: string]: string | number
   }>
+  getDetail: (id: string | number, type: string) => void
 }
 export default {
   title: 'ModuleComponent',

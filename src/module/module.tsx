@@ -1,9 +1,6 @@
 import * as React from 'react'
 import styles from './module.module.less'
-// import Button from 'antd/es/button'
-// import { Popconfirm, message } from 'antd'
 import Icon from '@ant-design/icons'
-import { ParentReceive } from '../transmitdata/transmitdata'
 interface Module {
   modules: Array<{
     title: string
@@ -11,6 +8,7 @@ interface Module {
     id: string | number
     [x: string]: string | number
   }>
+  getDetail: (id: string | number, type: string) => void
 }
 
 const AddSvg = () => (
@@ -44,16 +42,11 @@ const PreviewSvg = () => (
 // const DeleteIcon = (props: any) => <Icon component={deleteSvg} {...props} />
 const PreviewIcon = (props: any) => <Icon component={PreviewSvg} {...props} />
 
-export const ModuleComponent = ({ modules }: Module) => {
-  // const value: any = useContext(urlContext)
-  // const { setDeleteid, setDetailid } = value
-
+export const ModuleComponent = ({ modules, getDetail }: Module) => {
   const addToCanvas = (id: string, type: string) => {
-    // message.success(id)
-    ParentReceive.detailModuleId$.next({ id, type })
+    getDetail(id, type)
   }
   // const confirm = (id: number | string) => {
-  //   ParentReceive.deleteModuleId$.next(id)
   // }
 
   // const cancel = () => {
