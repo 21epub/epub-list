@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.15](https://github.com/li-qiuli/epub-list/compare/v0.0.14...v0.0.15) (2020-12-28)
+
+### Features
+
+- 🎸 更改回调函数参数值 ([76dc783](https://github.com/li-qiuli/epub-list/commit/76dc783f6259b32aefd906920a3222e996b0c905))
+
+### Bug Fixes
+
+- 🐛 laoding 错误 ([e58ccaf](https://github.com/li-qiuli/epub-list/commit/e58ccaf1a92c54aed9f97b0e14de5fcca40d243c))
+
 ### [0.0.14](https://github.com/li-qiuli/epub-list/compare/v0.0.13...v0.0.14) (2020-12-24)
 
 ### [0.0.13](https://github.com/li-qiuli/epub-list/compare/v0.0.12...v0.0.13) (2020-12-23)
