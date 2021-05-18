@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.16](https://github.com/li-qiuli/epub-list/compare/v0.0.15...v0.0.16) (2021-05-18)
+
+### Features
+
+- 🎸 监控刷新 ([3edc4ad](https://github.com/li-qiuli/epub-list/commit/3edc4ad54a3616cebb5843254f0925f633f44f5f))
+
 ### [0.0.15](https://github.com/li-qiuli/epub-list/compare/v0.0.14...v0.0.15) (2020-12-28)
 
 ### Features
