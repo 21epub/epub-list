@@ -37,6 +37,7 @@ interface moduleparam {
       }
     }
   }
+  forceupdate?: boolean
 }
 type list = {
   title: string
@@ -58,9 +59,25 @@ type list = {
 // }
 
 export const urlContext = createContext({})
-export const ModuleListComponent = ({
-  params: { navtitle, urls, getDetail, isShow, pagesize = 20 }
-}: moduleparam) => {
+
+// export const ModuleListComponent = (props) => {
+//   // let update=true
+//   const [update, setUpdate] = useState(true)
+//   setTimeout(() => {
+//     setUpdate(!update)
+//   }, 8000)
+//   return (
+//     <>
+//       <ModuleListComponentT {...props}></ModuleListComponentT>
+//     </>
+//   )
+// }
+
+export const ModuleListComponent = (props: moduleparam) => {
+  const {
+    params: { navtitle, urls, getDetail, isShow, pagesize = 20 },
+    forceupdate
+  } = props
   const [keyword, setKeyword] = useState(null)
   const [show, setShow] = useState(true)
   const [category, setCategory] = useState(null)
@@ -114,7 +131,7 @@ export const ModuleListComponent = ({
         console.log('modules1', modules)
       })
     return () => {}
-  }, [keyword, category])
+  }, [keyword, category, forceupdate])
 
   const closeModule = () => {
     isShow(false)
