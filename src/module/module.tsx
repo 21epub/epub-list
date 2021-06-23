@@ -1,15 +1,7 @@
 import * as React from 'react'
 import styles from './module.module.less'
 import Icon from '@ant-design/icons'
-interface Module {
-  modules: Array<{
-    title: string
-    url: string
-    id: string | number
-    [x: string]: string | number
-  }>
-  getDetail: (id: string | number, type: string) => void
-}
+import { ModuleListParam } from '../type/moduletype'
 
 const AddSvg = () => (
   <svg width='1em' height='1em' fill='currentColor' viewBox='0 0 1024 1024'>
@@ -42,7 +34,13 @@ const PreviewSvg = () => (
 // const DeleteIcon = (props: any) => <Icon component={deleteSvg} {...props} />
 const PreviewIcon = (props: any) => <Icon component={PreviewSvg} {...props} />
 
-export const ModuleComponent = ({ modules, getDetail }: Module) => {
+export const ModuleComponent = ({
+  modules,
+  getDetail,
+  width,
+  marginLeft,
+  initHeight
+}: ModuleListParam) => {
   const addToCanvas = (id: string, type: string) => {
     getDetail(id, type)
   }
@@ -54,35 +52,61 @@ export const ModuleComponent = ({ modules, getDetail }: Module) => {
   // }
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {modules.map((item, index) => (
-        <div key={String(index)} className={styles.list}>
+        <div
+          key={String(index)}
+          className={styles.list}
+          style={{ width: `${width}px`, marginLeft: `${marginLeft}px` }}
+        >
           <div
             className={styles.content}
             style={{
-              backgroundSize: 'cover',
+              backgroundSize: 'contain',
               backgroundPosition: '50% 50%',
-              backgroundImage: `url(${item.thumbnail ? item.thumbnail : ''})`
+              height: initHeight ? `${initHeight}px` : 'auto',
+              backgroundImage: initHeight ? `url(${item.thumbnail})` : 'none',
+              backgroundRepeat: ' no-repeat'
             }}
           >
-            <div className={styles.bg} />
-            <div className={styles.icon}>
-              <a
-                className={styles.add_canvas}
-                onClick={() => {
-                  addToCanvas(String(item.id), 'add')
-                }}
-              >
-                <AddIcon style={{ color: 'gray', fontSize: 37 }} />
-              </a>
-              <a
-                className={styles.add_canvas}
-                onClick={() => {
-                  addToCanvas(String(item.id), 'preview')
-                }}
-              >
-                <PreviewIcon style={{ color: 'gray', fontSize: 36 }} />
-              </a>
+            {!initHeight && (
+              <img
+                src={`${item.thumbnail || '/staticfs2/materials/hd/fm.png'}`}
+                style={{ width: `${width}px`, pointerEvents: 'none' }}
+              />
+            )}
+            <div
+              className={styles.hoverlist}
+              style={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0,
+                height: '100%',
+                transform: 'rotate( 0deg) scale(1) translate(0%, 0%)',
+                transition: 'all 0.3s ease'
+              }}
+            >
+              <div className={styles.bg} />
+              <div className={styles.icon}>
+                <a
+                  className={styles.add_canvas}
+                  onClick={() => {
+                    addToCanvas(String(item.id), 'add')
+                  }}
+                >
+                  <AddIcon style={{ color: 'gray', fontSize: 37 }} />
+                </a>
+                <a
+                  className={styles.add_canvas}
+                  onClick={() => {
+                    addToCanvas(String(item.id), 'preview')
+                  }}
+                >
+                  <PreviewIcon style={{ color: 'gray', fontSize: 36 }} />
+                </a>
+              </div>
             </div>
           </div>
           <div className={styles.head} data-id={item.id}>

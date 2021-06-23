@@ -3,42 +3,15 @@ import { Story, Meta } from '@storybook/react/types-6-0'
 
 import { ModuleListComponent } from './modulelists'
 import 'antd/es/button/style/index.css'
+import { moduleparam } from '../type/moduletype'
 
-interface moduleparam {
-  params: {
-    navtitle: {
-      titles: Array<{ name: string; selected: boolean; alias: string }>
-    }
-    isShow: (arg0: boolean) => void
-    getDetail: (arg0: string | number, type: string) => void
-    pagesize?: number
-    urls: {
-      common: {
-        categoryurl: string
-        searchjurl: string
-        alllistsurl: string
-        detailurl: string
-        changelisturl: string
-        deletelisturl: string
-      }
-      [my: string]: {
-        categoryurl: string
-        searchjurl: string
-        alllistsurl: string
-        detailurl: string
-        changelisturl: string
-        deletelisturl: string
-      }
-    }
-  }
-}
 export default {
   title: 'ModuleComponent',
   component: ModuleListComponent,
   argTypes: {}
 } as Meta
-const getDetailMsg = (obj: number | string, type: string) => {
-  console.log('huoquxiangxixinxi', obj, type)
+const getDetailMsg = (obj: number | string, type: string, which: string) => {
+  console.log('huoquxiangxixinxi', obj, type, which)
 }
 const showModile = (iShow: boolean) => {
   console.log('关闭', iShow)
@@ -58,7 +31,10 @@ const baseurl = 'https://yapi.epub360.com/mock/125'
 lists.args = {
   params: {
     navtitle: {
-      titles: [{ name: '模块', selected: true, alias: 'common' }]
+      titles: [
+        { name: '模块', selected: true, alias: 'common' },
+        { name: '我的模块', selected: false, alias: 'my' }
+      ]
     },
     isShow: showModile,
     getDetail: getDetailMsg,
@@ -66,20 +42,19 @@ lists.args = {
     urls: {
       common: {
         categoryurl: baseurl + '/v3/api/admin/h5/overlays/categories',
-        searchjurl: baseurl + '/v3/api/admin/h5/overlays/',
-        alllistsurl: baseurl + '/v3/api/admin/h5/overlays/',
-        detailurl: baseurl + '/v3/api/admin/h5/overlays/',
-        changelisturl: baseurl + '/v3/api/admin/h5/overlays/',
-        deletelisturl: baseurl + '/v3/api/admin/h5/overlays/'
+        alllistsurl: baseurl + '/v3/api/admin/h5/overlays/'
       },
       my: {
         categoryurl: baseurl + '/v3/api/admin/h5/overlays/categories',
-        searchjurl: baseurl + '/v3/api/admin/h5/overlays/',
-        alllistsurl: baseurl + '/v3/api/admin/h5/overlays/',
-        detailurl: baseurl + '/v3/api/admin/h5/overlays/',
-        changelisturl: baseurl + '/v3/api/admin/h5/overlays/',
-        deletelisturl: baseurl + '/v3/api/admin/h5/overlays/'
+        alllistsurl: 'https://yapi.epub360.com/mock/148/api/tempaltes/'
       }
     }
+    // modulestyle: {
+    // width: 320,
+    // subwidth: 300,
+    // width: 360,
+    // subwidth: 107,
+    // initHeight: 160
+    // }
   }
 }

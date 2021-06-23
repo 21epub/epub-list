@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react'
+import React, { memo, useContext, useState } from 'react'
 import 'antd/dist/antd.css'
-// import './index.css'
 import { Input } from 'antd'
 import Icon from '@ant-design/icons'
 
@@ -12,16 +11,12 @@ const SearchSvg = () => (
 )
 const SearchIcon = (props: any) => <Icon component={SearchSvg} {...props} />
 
-export const SearchComponent = () => {
+export const SearchComponent = memo(() => {
   const value: any = useContext(urlContext)
   const { setKeyword } = value
   const [inputvalue, setInputvalue] = useState('')
   const onSearch = (event: any) => {
     setKeyword(inputvalue)
-    // if ((event && event.target && event.target.value) || inputvalue) {
-    //   const value = event.target.value || inputvalue
-    //   setKeyword(value)
-    // }
   }
   const getValue = (event: { target: { value: any } }) => {
     const value = event.target.value
@@ -38,10 +33,9 @@ export const SearchComponent = () => {
       value={inputvalue}
       prefix={suffix}
       placeholder='搜索'
-      // allowClear
       onPressEnter={onSearch}
       onChange={getValue}
       style={{ width: '46%' }}
     />
   )
-}
+})

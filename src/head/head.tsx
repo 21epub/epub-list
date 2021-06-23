@@ -1,22 +1,21 @@
 import * as React from 'react'
-import { useContext, useState } from 'react'
-import { urlContext } from '../combine/modulelists'
+import { useState } from 'react'
 import styles from './head.module.less'
-interface Title {
-  titles: Array<{ name: string; selected: boolean }>
+interface TitleDetail {
+  name: string
+  selected: boolean
+  alias?: string
 }
-export const HeadComponent = ({ titles }: Title) => {
+interface Title {
+  titles: Array<TitleDetail>
+  changedTitle: (param: { name: string; alias: string }) => void
+}
+
+export const HeadComponent = ({ titles, changedTitle }: Title) => {
   const [moduletitles, setModuletitles] = useState(titles)
-  const value: any = useContext(urlContext)
-  const { setmModuletype } = value
-  const changeTitle = ({
-    name,
-    alias
-  }: {
-    name: string
-    selected: boolean
-    alias?: string
-  }) => {
+  const changeTitle = ({ name, alias }: { name: string; alias: string }) => {
+    changedTitle({ name, alias })
+
     titles.map((item) => {
       const it = item
       if (it.name === name) {
@@ -27,7 +26,7 @@ export const HeadComponent = ({ titles }: Title) => {
     })
     setModuletitles([...titles])
 
-    setmModuletype(alias)
+    // setmModuletype(alias)
   }
   return (
     <div className={styles.head}>
@@ -36,6 +35,7 @@ export const HeadComponent = ({ titles }: Title) => {
           <li
             key={String(index)}
             className={it.selected ? styles.actived : styles.title}
+            style={{ cursor: 'pointer' }}
             onClick={() => changeTitle(it)}
           >
             {it.name}
