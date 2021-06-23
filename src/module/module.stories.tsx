@@ -3,21 +3,13 @@ import { Story, Meta } from '@storybook/react/types-6-0'
 
 import { ModuleComponent } from './module'
 import 'antd/es/button/style/index.css'
-interface Modules {
-  modules: Array<{
-    title: string
-    url: string
-    id: string | number
-    [x: string]: string | number
-  }>
-  getDetail: (id: string | number, type: string) => void
-}
+import { ModuleListParam } from '../type/moduletype'
 export default {
   title: 'ModuleComponent',
   component: ModuleComponent
 } as Meta
 
-const Template: Story<Modules> = (args) => <ModuleComponent {...args} />
+const Template: Story<ModuleListParam> = (args) => <ModuleComponent {...args} />
 
 export const Test = Template.bind({})
 

@@ -3,11 +3,7 @@ import 'antd/dist/antd.css'
 import { TreeSelect } from 'antd'
 
 import { urlContext } from '../combine/modulelists'
-interface TreeContent {
-  title: string
-  value: string
-  [x: string]: number | string | Array<TreeContent>
-}
+
 export const SelectComponent = ({ items }: any) => {
   const [selectvalue, setSelectvalue] = useState('所有')
   const value: any = useContext(urlContext)
