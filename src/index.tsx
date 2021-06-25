@@ -3,7 +3,7 @@
 // import Button from 'antd/es/button'
 import { ModuleListComponent } from './combine/modulelists'
 // import { ModuleComponent } from './module/module'
-import { HeadComponent } from './head/head'
+// export { HeadComponent } from './head/head'
 // import { ModuleListComponent } from './combine/modulelists'
 
 // interface Props {
@@ -18,4 +18,4 @@ import { HeadComponent } from './head/head'
 //     </div>
 //   )
 // }
-export default { ModuleListComponent, HeadComponent }
+export default ModuleListComponent
