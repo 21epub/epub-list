@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.17](https://github.com/li-qiuli/epub-list/compare/v0.0.16...v0.0.17) (2021-06-25)
+
+### Features
+
+- 🎸 module 支持多列 ([61151ef](https://github.com/li-qiuli/epub-list/commit/61151ef6d97d8a4fd85df02166fd54d9e0788a7e))
+- 🎸 module 支持多列 ([77305e2](https://github.com/li-qiuli/epub-list/commit/77305e27bcd4582762d856439982d0eed6e4f78f))
+- 🎸 readme 更改 ([aa66f1c](https://github.com/li-qiuli/epub-list/commit/aa66f1c701e5dd7c1b3ad8efd3a9048936028207))
+- 🎸 样式调整 ([ffbfe04](https://github.com/li-qiuli/epub-list/commit/ffbfe046c027e090147efb622fee0fa7cf76a586))
+- 🎸 添加 type 文件 ([20a569b](https://github.com/li-qiuli/epub-list/commit/20a569b8f5eb9c2197e5cf88b1840ad87c37bd5f))
+
 ### [0.0.16](https://github.com/li-qiuli/epub-list/compare/v0.0.15...v0.0.16) (2021-05-18)
 
 ### Features
