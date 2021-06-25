@@ -18,5 +18,4 @@ import { HeadComponent } from './head/head'
 //     </div>
 //   )
 // }
-// ModuleComponent
-export { ModuleListComponent, HeadComponent }
+export default { ModuleListComponent, HeadComponent }
