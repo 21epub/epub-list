@@ -24,7 +24,11 @@ npm install --save @21epub/epub-list
 
 ```tsx
 import React from 'react'
-import ModuleListComponent from '@21epub/epub-list'
+import {
+  ModuleListComponent,
+  ModuleComponent,
+  HeadComponent
+} from '@21epub/epub-list'
 import '@21epub/epub-list/dist/index.css'
 import { render } from 'react-dom'
 export interface moduleparam {
@@ -50,11 +54,13 @@ export interface moduleparam {
       subwidth: number
       initHeight?: number
     }
+    iconstyle?: any
   }
   forceupdate?: boolean
 }
 
 const baseurl = 'https://yapi.epub360.com/mock/125'
+
 const getDetailMsg = (obj: [], type: string, which: string) => {
   console.log('huoquxiangxixinxi', obj, type, which)
 }
@@ -97,6 +103,10 @@ export const loadModule = () => {
   const frag = document.createElement('div')
   render(<ModuleListComponent {...args} />, frag)
 }
+```
+
+```tsx
+
 ```
 
 For Details: See Example

@@ -1,17 +1,9 @@
 import * as React from 'react'
 import { useState } from 'react'
+import { HeadProps } from '../type/moduletype'
 import styles from './head.module.less'
-interface TitleDetail {
-  name: string
-  selected: boolean
-  alias?: string
-}
-interface Title {
-  titles: Array<TitleDetail>
-  changedTitle: (param: { name: string; alias: string }) => void
-}
 
-export const HeadComponent = ({ titles, changedTitle }: Title) => {
+export const HeadComponent = ({ titles, changedTitle }: HeadProps) => {
   const [moduletitles, setModuletitles] = useState(titles)
   const changeTitle = ({ name, alias }: { name: string; alias: string }) => {
     changedTitle({ name, alias })

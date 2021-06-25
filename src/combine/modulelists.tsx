@@ -21,7 +21,8 @@ export const ModuleListComponent = memo((props: moduleparam) => {
       getDetail,
       isShow,
       pagesize = 20,
-      modulestyle = { width: 320, subwidth: 300, initHeight: null }
+      modulestyle = { width: 320, subwidth: 300, initHeight: null },
+      iconstyle = {}
     },
     forceupdate
   } = props
@@ -149,7 +150,9 @@ export const ModuleListComponent = memo((props: moduleparam) => {
                   getDetail: postMsgModule,
                   width: modulestyle.subwidth,
                   marginLeft: marginLeft,
-                  initHeight: modulestyle.initHeight
+                  initHeight: modulestyle.initHeight,
+                  OptionalIcon: SelectedUrl?.OptionalIcon || null,
+                  iconstyle
                 }}
               />
               {!show && (

@@ -9,6 +9,7 @@ export default {
   component: ModuleComponent
 } as Meta
 
+const getMsg = (d: string, opttype: string) => {}
 const Template: Story<ModuleListParam> = (args) => <ModuleComponent {...args} />
 
 export const Test = Template.bind({})
@@ -18,12 +19,18 @@ Test.args = {
     {
       title: 'test',
       url: '',
-      id: 3
+      id: 3,
+      thumbnail: ''
     },
     {
       title: 'test',
       url: '',
-      id: 3
+      id: 3,
+      thumbnail: ''
     }
-  ]
+  ],
+  marginLeft: 20,
+  width: 320,
+  initHeight: 160,
+  getDetail: getMsg
 }

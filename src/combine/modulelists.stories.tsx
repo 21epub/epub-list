@@ -42,19 +42,26 @@ lists.args = {
     urls: {
       common: {
         categoryurl: baseurl + '/v3/api/admin/h5/overlays/categories',
-        alllistsurl: baseurl + '/v3/api/admin/h5/overlays/'
+        alllistsurl: baseurl + '/v3/api/admin/h5/overlays/',
+        OptionalIcon: 'favor'
       },
       my: {
         categoryurl: baseurl + '/v3/api/admin/h5/overlays/categories',
-        alllistsurl: 'https://yapi.epub360.com/mock/148/api/tempaltes/'
+        alllistsurl: 'https://yapi.epub360.com/mock/148/api/tempaltes/',
+        OptionalIcon: 'delete'
       }
+    },
+    modulestyle: {
+      // width: 320,
+      // subwidth: 300,
+      width: 360,
+      subwidth: 107
+      // initHeight: 160
+    },
+    iconstyle: {
+      width: '30px',
+      height: '30px',
+      padding: '0px'
     }
-    // modulestyle: {
-    // width: 320,
-    // subwidth: 300,
-    // width: 360,
-    // subwidth: 107,
-    // initHeight: 160
-    // }
   }
 }

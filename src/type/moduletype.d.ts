@@ -11,10 +11,12 @@ export interface moduleparam {
       common: {
         categoryurl: string
         alllistsurl: string
+        OptionalIcon?: 'favor' | 'delete'
       }
       [my: string]: {
         categoryurl: string
         alllistsurl: string
+        OptionalIcon?: 'favor' | 'delete'
       }
     }
     modulestyle?: {
@@ -22,6 +24,7 @@ export interface moduleparam {
       subwidth: number
       initHeight?: number
     }
+    iconstyle?: object
   }
   forceupdate?: boolean
 }
@@ -39,14 +42,20 @@ export interface ModuleListParam {
     id: string | number
     [x: string]: string | number
   }>
-  getDetail: (id: string | number, type: string) => void
+  getDetail: (id: string, opttype: string) => void
   width: number
   marginLeft?: number
   initHeight?: number | null
+  OptionalIcon: string | null
+  iconstyle?: object
 }
 
-// type OptMsg = {
-//     opt: string,
-//     optId: string,
-//     where: string
-// }
+interface HeadList {
+  name: string
+  selected: boolean
+  alias: string
+}
+export interface HeadProps {
+  titles: Array<HeadList>
+  changedTitle: (param: { name: string; alias: string }) => void
+}

@@ -2,6 +2,10 @@
 // import styles from './styles.module.less'
 // import Button from 'antd/es/button'
 import { ModuleListComponent } from './combine/modulelists'
+// import { ModuleComponent } from './module/module'
+import { HeadComponent } from './head/head'
+// import { ModuleListComponent } from './combine/modulelists'
+
 // interface Props {
 //   text: string
 // }
@@ -14,4 +18,5 @@ import { ModuleListComponent } from './combine/modulelists'
 //     </div>
 //   )
 // }
-export default ModuleListComponent
+// ModuleComponent
+export { ModuleListComponent, HeadComponent }
