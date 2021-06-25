@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.18](https://github.com/li-qiuli/epub-list/compare/v0.0.17...v0.0.18) (2021-06-25)
+
+### Features
+
+- 🎸 引入 HeadComponent ([bc53ac9](https://github.com/li-qiuli/epub-list/commit/bc53ac916b5db78d080615e930b4e604fe593074))
+
 ### [0.0.17](https://github.com/li-qiuli/epub-list/compare/v0.0.16...v0.0.17) (2021-06-25)
 
 ### Features
