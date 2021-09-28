@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.23](https://github.com/li-qiuli/epub-list/compare/v0.0.22...v0.0.23) (2021-09-28)
+
+### Features
+
+- 🎸 树形图数据更新 ([a253a1b](https://github.com/li-qiuli/epub-list/commit/a253a1baf1d7be0dcc16160c12d2eda85216aed2))
+
 ### [0.0.22](https://github.com/li-qiuli/epub-list/compare/v0.0.21...v0.0.22) (2021-09-28)
 
 ### Bug Fixes
