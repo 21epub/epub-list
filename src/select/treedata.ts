@@ -1,12 +1,21 @@
-const mapCategoryToTreeData = (category) => {
-  const { id, title, children } = category
+type CategoryList = {
+  id?: string | number
+  title: string
+  children: CategoryList[]
+  value?: string
+}
+
+const mapCategoryToTreeData = (category: CategoryList) => {
+  const { id, title, children, value } = category
   return {
     title,
-    value: String(id),
+    value: value || String(id),
     children: SwitchtToTreeDataList(children)
   }
 }
 
-export const SwitchtToTreeDataList = (categoryList) => {
-  return categoryList.map((c) => mapCategoryToTreeData(c))
+export const SwitchtToTreeDataList = (
+  categoryList: CategoryList[]
+): CategoryList[] => {
+  return categoryList.map((c: CategoryList) => mapCategoryToTreeData(c))
 }
