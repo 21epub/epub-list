@@ -120,7 +120,7 @@ export const ModuleListComponent = memo((props: moduleparam) => {
           <HeadComponent {...navtitle} changedTitle={changeTitle} />
           <div className={styles.inputmessage}>
             <SearchComponent />
-            <SelectComponent url={SelectedUrl.alllistsurl} />
+            <SelectComponent url={SelectedUrl.categoryurl} />
           </div>
         </div>
         <div className={styles.lists}>
