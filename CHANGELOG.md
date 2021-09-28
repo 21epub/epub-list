@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.24](https://github.com/li-qiuli/epub-list/compare/v0.0.23...v0.0.24) (2021-09-28)
+
+### Bug Fixes
+
+- 🐛 treeSelect 未调用接口 ([b23414e](https://github.com/li-qiuli/epub-list/commit/b23414e2222a41a34ff0bf03e8aeb3f857074d2a))
+
 ### [0.0.23](https://github.com/li-qiuli/epub-list/compare/v0.0.22...v0.0.23) (2021-09-28)
 
 ### Features
