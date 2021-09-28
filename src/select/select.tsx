@@ -27,17 +27,15 @@ export const SelectComponent = ({ items }: any) => {
     setCategory(value)
   }
   return (
-    TreeDate.length > 0 && (
-      <TreeSelect
-        allowClear
-        style={{ width: '46%' }}
-        value={selectvalue}
-        dropdownStyle={{ maxHeight: 200, overflow: 'auto' }}
-        treeData={TreeDate}
-        onChange={(value) => {
-          onChange(value)
-        }}
-      />
-    )
+    <TreeSelect
+      allowClear
+      style={{ width: '46%' }}
+      value={selectvalue}
+      dropdownStyle={{ maxHeight: 200, overflow: 'auto' }}
+      treeData={TreeDate}
+      onChange={(value) => {
+        onChange(value)
+      }}
+    />
   )
 }
