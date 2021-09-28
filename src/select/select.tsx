@@ -1,29 +1,24 @@
 import React, { useContext, useEffect, useState } from 'react'
 import 'antd/dist/antd.css'
 import { TreeSelect } from 'antd'
-import { CategoryList, SwitchtToTreeDataList } from './treedata'
+import { CategoryList, getCategory } from './treedata'
 import { urlContext } from '../combine/modulelists'
-import { concat } from 'ramda'
 
-export const SelectComponent = ({ items }: any) => {
+export const SelectComponent = ({ url }: any) => {
   const [TreeDate, setTreeDate] = useState<CategoryList[]>([])
-  useEffect(() => {
-    const tree = concat(
-      [
-        {
-          title: '所有',
-          value: '',
-          children: []
-        }
-      ],
-      SwitchtToTreeDataList(items)
-    )
-    setTreeDate(tree)
-  }, [items])
 
   const [selectvalue, setSelectvalue] = useState('所有')
   const value: any = useContext(urlContext)
   const { setCategory } = value
+
+  const getResult = async () => {
+    const results = getCategory(url)
+    setTreeDate(await results)
+  }
+
+  useEffect(() => {
+    getResult()
+  }, [url])
 
   const onChange = (values: string) => {
     const value = values || ''

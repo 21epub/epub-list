@@ -46,15 +46,6 @@ export const ModuleListComponent = memo((props: moduleparam) => {
       SelectedUrl.alllistsurl
     ])
 
-  const getcategory =
-    SelectedUrl.categoryurl &&
-    useMemo(() => new DataClient<any>(SelectedUrl.categoryurl), [
-      SelectedUrl.alllistsurl
-    ])
-
-  const moduleCategory = {
-    items: getcategory && getcategory?.useData()
-  }
   const closeLoading = (res: any) => {
     if (res && res.length < pagesize) {
       setShow(false)
@@ -130,7 +121,7 @@ export const ModuleListComponent = memo((props: moduleparam) => {
           <HeadComponent {...navtitle} changedTitle={changeTitle} />
           <div className={styles.inputmessage}>
             <SearchComponent />
-            <SelectComponent {...moduleCategory} />
+            <SelectComponent url={SelectedUrl.alllistsurl} />
           </div>
         </div>
         <div className={styles.lists}>

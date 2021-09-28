@@ -1,3 +1,5 @@
+import { concat } from 'ramda'
+import request from 'umi-request'
 export type CategoryList = {
   id?: string | number
   title: string
@@ -18,4 +20,26 @@ export const SwitchtToTreeDataList = (
   categoryList: CategoryList[]
 ): CategoryList[] => {
   return categoryList.map((c: CategoryList) => mapCategoryToTreeData(c))
+}
+
+type ApiCategoryList = {
+  data: {
+    results: CategoryList[]
+  }
+}
+export const getCategory = async (url: string) => {
+  const {
+    data: { results }
+  } = await request.get<ApiCategoryList>(url)
+  const tree = concat(
+    [
+      {
+        title: '所有',
+        value: '',
+        children: []
+      }
+    ],
+    SwitchtToTreeDataList(results)
+  )
+  return tree
 }
