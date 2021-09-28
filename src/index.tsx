@@ -1,8 +1,9 @@
 // import * as React from 'react'
 // import styles from './styles.module.less'
 // import Button from 'antd/es/button'
-import { ModuleListComponent } from './combine/modulelists'
-// import { ModuleComponent } from './module/module'
+// import { ModuleListComponent } from './combine/modulelists'
+export * from './module/module'
+export * from './combine/modulelists'
 // export { HeadComponent } from './head/head'
 // import { ModuleListComponent } from './combine/modulelists'
 
@@ -18,4 +19,4 @@ import { ModuleListComponent } from './combine/modulelists'
 //     </div>
 //   )
 // }
-export default ModuleListComponent
+// export default ModuleListComponent
