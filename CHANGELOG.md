@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.26](https://github.com/li-qiuli/epub-list/compare/v0.0.25...v0.0.26) (2021-09-28)
+
+### Bug Fixes
+
+- 🐛 children undefined ([6e82e4c](https://github.com/li-qiuli/epub-list/commit/6e82e4c4f703f73e5c20b7f059b8ea2ad1e46f42))
+
 ### [0.0.25](https://github.com/li-qiuli/epub-list/compare/v0.0.24...v0.0.25) (2021-09-28)
 
 ### Bug Fixes
