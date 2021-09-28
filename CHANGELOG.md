@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.20](https://github.com/li-qiuli/epub-list/compare/v0.0.19...v0.0.20) (2021-09-28)
+
+### Features
+
+- 🎸 select 数据调整 ([0bb7eda](https://github.com/li-qiuli/epub-list/commit/0bb7edac8382c029610f2b219d1dba0bd7217107))
+- 🎸 select 调整 ([42c8012](https://github.com/li-qiuli/epub-list/commit/42c8012b13dc4642161c6af997a16be31668e868))
+- 🎸 组件导出 ([c1c13fb](https://github.com/li-qiuli/epub-list/commit/c1c13fbac265c7c1fe4455cecc437fbbcbaa766e))
+
 ### [0.0.19](https://github.com/li-qiuli/epub-list/compare/v0.0.18...v0.0.19) (2021-06-25)
 
 ### [0.0.18](https://github.com/li-qiuli/epub-list/compare/v0.0.17...v0.0.18) (2021-06-25)
