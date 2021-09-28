@@ -19,6 +19,7 @@ const mapCategoryToTreeData = (category: CategoryList) => {
 export const SwitchtToTreeDataList = (
   categoryList: CategoryList[]
 ): CategoryList[] => {
+  if (!categoryList) return []
   return categoryList.map((c: CategoryList) => mapCategoryToTreeData(c))
 }
 
