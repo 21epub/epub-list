@@ -1,12 +1,13 @@
-import React, { useContext, useMemo, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import 'antd/dist/antd.css'
 import { TreeSelect } from 'antd'
-import { SwitchtToTreeDataList } from './treedata'
+import { CategoryList, SwitchtToTreeDataList } from './treedata'
 import { urlContext } from '../combine/modulelists'
 import { concat } from 'ramda'
 
 export const SelectComponent = ({ items }: any) => {
-  const TreeDate = useMemo(() => {
+  const [TreeDate, setTreeDate] = useState<CategoryList[]>([])
+  useEffect(() => {
     const tree = concat(
       [
         {
@@ -17,8 +18,8 @@ export const SelectComponent = ({ items }: any) => {
       ],
       SwitchtToTreeDataList(items)
     )
-    return tree
-  }, items)
+    setTreeDate(tree)
+  }, [items])
 
   const [selectvalue, setSelectvalue] = useState('所有')
   const value: any = useContext(urlContext)
