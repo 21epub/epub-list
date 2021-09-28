@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.25](https://github.com/li-qiuli/epub-list/compare/v0.0.24...v0.0.25) (2021-09-28)
+
+### Bug Fixes
+
+- 🐛 react 重复引入 ([5b9cd30](https://github.com/li-qiuli/epub-list/commit/5b9cd30c59560cab76030fc709c1060fe5b9ad1f))
+
 ### [0.0.24](https://github.com/li-qiuli/epub-list/compare/v0.0.23...v0.0.24) (2021-09-28)
 
 ### Bug Fixes
