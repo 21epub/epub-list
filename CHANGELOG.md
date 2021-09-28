@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.22](https://github.com/li-qiuli/epub-list/compare/v0.0.21...v0.0.22) (2021-09-28)
+
+### Bug Fixes
+
+- 🐛 treedata 更改 ([e40d373](https://github.com/li-qiuli/epub-list/commit/e40d373ad77d2359e98d263b88baacc866308325))
+
 ### [0.0.21](https://github.com/li-qiuli/epub-list/compare/v0.0.20...v0.0.21) (2021-09-28)
 
 ### Features
