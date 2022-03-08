@@ -56,7 +56,7 @@ export const ModuleComponent = ({
               <div className={styles.bg} />
               <div className={styles.icon}>
                 <a
-                  className={styles.add_canvas}
+                  className={`${styles.add_canvas} moduleadd`}
                   style={iconstyle}
                   onClick={() => {
                     addToCanvas(String(item.id), 'add')
@@ -65,7 +65,7 @@ export const ModuleComponent = ({
                   <AddIcon />
                 </a>
                 <a
-                  className={styles.add_canvas}
+                  className={`${styles.add_canvas} modulepreview`}
                   style={iconstyle}
                   onClick={() => {
                     addToCanvas(String(item.id), 'preview')
