@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.28](https://github.com/li-qiuli/epub-list/compare/v0.0.27...v0.0.28) (2022-03-22)
+
+### Features
+
+- 🎸 添加 class 供自动化测试 ([4f03cf4](https://github.com/li-qiuli/epub-list/commit/4f03cf48c569f7490d3af3d5be8e62f82bdc1f53))
+
 ### [0.0.27](https://github.com/li-qiuli/epub-list/compare/v0.0.26...v0.0.27) (2021-09-28)
 
 ### Features
