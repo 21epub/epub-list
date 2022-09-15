@@ -3,7 +3,7 @@ export interface moduleparam {
     navtitle: {
       titles: Array<{ name: string; selected: boolean; alias: string }>
     }
-    level?: number
+    level: number
     isShow: (arg0: boolean) => void
     // getDetail: (arg0: OptMsg) => void
     getDetail: (arg0: string | number, type: string, opt: string) => void
@@ -49,7 +49,7 @@ export interface ModuleListParam {
   initHeight?: number | null
   OptionalIcon: string | null
   iconstyle?: object
-  level?: number
+  level: number
 }
 
 interface HeadList {
