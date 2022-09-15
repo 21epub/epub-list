@@ -10,7 +10,8 @@ export const ModuleComponent = ({
   marginLeft,
   initHeight,
   OptionalIcon,
-  iconstyle = {}
+  iconstyle = {},
+  level
 }: ModuleListParam) => {
   const addToCanvas = (id: string, type: string) => {
     getDetail(id, type)
@@ -34,6 +35,12 @@ export const ModuleComponent = ({
               backgroundRepeat: ' no-repeat'
             }}
           >
+            {item?.privilege && (
+              <div className={styles.limit}>
+                {item.privilege === 3 ? '专业版' : '企业版'}
+              </div>
+            )}
+
             {!initHeight && (
               <img
                 src={`${item.thumbnail || '/staticfs2/materials/hd/fm.png'}`}
@@ -56,15 +63,6 @@ export const ModuleComponent = ({
               <div className={styles.bg} />
               <div className={styles.icon}>
                 <a
-                  className={`${styles.add_canvas} moduleadd`}
-                  style={iconstyle}
-                  onClick={() => {
-                    addToCanvas(String(item.id), 'add')
-                  }}
-                >
-                  <AddIcon />
-                </a>
-                <a
                   className={`${styles.add_canvas} modulepreview`}
                   style={iconstyle}
                   onClick={() => {
@@ -73,6 +71,17 @@ export const ModuleComponent = ({
                 >
                   <PreviewIcon />
                 </a>
+                {level >= item?.privilege && (
+                  <a
+                    className={`${styles.add_canvas} moduleadd`}
+                    style={iconstyle}
+                    onClick={() => {
+                      addToCanvas(String(item.id), 'add')
+                    }}
+                  >
+                    <AddIcon />
+                  </a>
+                )}
               </div>
               {OptionalIcon === 'delete' && (
                 <div

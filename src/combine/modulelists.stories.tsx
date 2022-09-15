@@ -36,6 +36,7 @@ lists.args = {
         { name: '我的模块', selected: false, alias: 'my' }
       ]
     },
+    level: 0,
     isShow: showModile,
     getDetail: getDetailMsg,
     pagesize: 6,
