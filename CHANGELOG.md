@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.29](https://github.com/li-qiuli/epub-list/compare/v0.0.28...v0.0.29) (2022-09-15)
+
+### Bug Fixes
+
+- 🐛 添加权限限制 ([a343b44](https://github.com/li-qiuli/epub-list/commit/a343b44901514ffe39f9035d9ae393de5e648fb0))
+
 ### [0.0.28](https://github.com/li-qiuli/epub-list/compare/v0.0.27...v0.0.28) (2022-03-22)
 
 ### Features
