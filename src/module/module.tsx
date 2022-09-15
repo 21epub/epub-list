@@ -35,10 +35,12 @@ export const ModuleComponent = ({
               backgroundRepeat: ' no-repeat'
             }}
           >
-            {item?.privilege && (
+            {item?.privilege ? (
               <div className={styles.limit}>
                 {item.privilege === 3 ? '专业版' : '企业版'}
               </div>
+            ) : (
+              ''
             )}
 
             {!initHeight && (
@@ -71,7 +73,7 @@ export const ModuleComponent = ({
                 >
                   <PreviewIcon />
                 </a>
-                {level >= item?.privilege && (
+                {level >= item?.privilege ? (
                   <a
                     className={`${styles.add_canvas} moduleadd`}
                     style={iconstyle}
@@ -81,6 +83,8 @@ export const ModuleComponent = ({
                   >
                     <AddIcon />
                   </a>
+                ) : (
+                  ''
                 )}
               </div>
               {OptionalIcon === 'delete' && (
