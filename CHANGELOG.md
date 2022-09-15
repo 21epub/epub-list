@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.30](https://github.com/li-qiuli/epub-list/compare/v0.0.29...v0.0.30) (2022-09-15)
+
+### Bug Fixes
+
+- 🐛 修复 lint ([9057000](https://github.com/li-qiuli/epub-list/commit/905700049778543088ec59c283c8bbd8ae0f2948))
+
 ### [0.0.29](https://github.com/li-qiuli/epub-list/compare/v0.0.28...v0.0.29) (2022-09-15)
 
 ### Bug Fixes
