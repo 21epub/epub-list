@@ -51,8 +51,8 @@ export const ModuleListComponent = memo((props: moduleparam) => {
       setShow(false)
     }
   }
-  const postMsgModule = (id: string, opttype: string) => {
-    getDetail(id, opttype, ModuleType)
+  const postMsgModule = (id: string, opttype: string, privilege?: number) => {
+    getDetail(id, opttype, ModuleType, privilege)
   }
   const modules: Array<modulelist> =
     (clientlists && clientlists.useData()) || []

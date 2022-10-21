@@ -11,7 +11,7 @@ export default {
   argTypes: {}
 } as Meta
 const getDetailMsg = (obj: number | string, type: string, which: string) => {
-  console.log('huoquxiangxixinxi', obj, type, which)
+  console.log('获取信息', obj, type, which)
 }
 const showModile = (iShow: boolean) => {
   console.log('关闭', iShow)
@@ -36,7 +36,7 @@ lists.args = {
         { name: '我的模块', selected: false, alias: 'my' }
       ]
     },
-    level: 0,
+    level: 5,
     isShow: showModile,
     getDetail: getDetailMsg,
     pagesize: 6,

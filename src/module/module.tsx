@@ -1,7 +1,13 @@
 import * as React from 'react'
 import styles from './module.module.less'
 import { ModuleListParam } from '../type/moduletype'
-import { AddIcon, FavorIcon, PreviewIcon, DeleteIcon } from '../Icon/icon'
+import {
+  AddIcon,
+  AddIconDisable,
+  FavorIcon,
+  PreviewIcon,
+  DeleteIcon
+} from '../Icon/icon'
 
 export const ModuleComponent = ({
   modules,
@@ -13,8 +19,8 @@ export const ModuleComponent = ({
   iconstyle = {},
   level
 }: ModuleListParam) => {
-  const addToCanvas = (id: string, type: string) => {
-    getDetail(id, type)
+  const addToCanvas = (id: string, type: string, privilege?: number) => {
+    getDetail(id, type, privilege)
   }
 
   return (
@@ -78,13 +84,21 @@ export const ModuleComponent = ({
                     className={`${styles.add_canvas} moduleadd`}
                     style={iconstyle}
                     onClick={() => {
-                      addToCanvas(String(item.id), 'add')
+                      addToCanvas(String(item.id), 'add', item.privilege)
                     }}
                   >
                     <AddIcon />
                   </a>
                 ) : (
-                  ''
+                  <a
+                    className={`${styles.add_canvas} moduleadd`}
+                    style={iconstyle}
+                    onClick={() => {
+                      addToCanvas(String(item.id), 'add', item.privilege)
+                    }}
+                  >
+                    <AddIconDisable />
+                  </a>
                 )}
               </div>
               {OptionalIcon === 'delete' && (

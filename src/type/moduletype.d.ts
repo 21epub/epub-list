@@ -6,7 +6,12 @@ export interface moduleparam {
     level: number
     isShow: (arg0: boolean) => void
     // getDetail: (arg0: OptMsg) => void
-    getDetail: (arg0: string | number, type: string, opt: string) => void
+    getDetail: (
+      arg0: string | number,
+      type: string,
+      opt: string,
+      privilege?: number
+    ) => void
     pagesize?: number
     urls: {
       common: {
@@ -34,6 +39,7 @@ export interface modulelist {
   title: string
   url: string
   id: number
+  privilege: number
   [x: string]: string | number
 }
 export interface ModuleListParam {
@@ -41,9 +47,10 @@ export interface ModuleListParam {
     title: string
     url: string
     id: string | number
+    privilege: number
     [x: string]: string | number
   }>
-  getDetail: (id: string, opttype: string) => void
+  getDetail: (id: string, opttype: string, privilege?: number) => void
   width: number
   marginLeft?: number
   initHeight?: number | null
