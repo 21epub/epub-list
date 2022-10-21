@@ -11,6 +11,16 @@ const AddIcon = () => (
 )
 // const AddIcon = (props: any) => <Icon component={AddSvg} {...props} />
 
+const AddIconDisable = () => (
+  <svg style={{ width: '100%', height: '100%' }} viewBox='0 0 1024 1024'>
+    <path
+      d='M512 85.333333C277.333333 85.333333 85.333333 277.333333 85.333333 512s192 426.666667 426.666667 426.666667c234.666667 0 426.666667-192 426.666667-426.666667S746.666667 85.333333 512 85.333333zM725.333333 554.666667l-170.666667 0 0 170.666667-85.333333 0 0-170.666667L298.666667 554.666667l0-85.333333 170.666667 0L469.333333 298.666667l85.333333 0 0 170.666667 170.666667 0L725.333333 554.666667z'
+      fill='#bfbfbf'
+    />
+  </svg>
+)
+// const AddIconDisable = (props: any) => <Icon component={AddSvg} {...props} />
+
 const PreviewIcon = () => (
   <svg style={{ width: '100%', height: '100%' }} viewBox='0 0 1024 1024'>
     <path
@@ -48,4 +58,11 @@ const SearchSvg = () => (
 )
 const SearchIcon = (props: any) => <Icon component={SearchSvg} {...props} />
 
-export { AddIcon, PreviewIcon, DeleteIcon, FavorIcon, SearchIcon }
+export {
+  AddIcon,
+  AddIconDisable,
+  PreviewIcon,
+  DeleteIcon,
+  FavorIcon,
+  SearchIcon
+}
